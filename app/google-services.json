@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "343757020218",
+    "firebase_url": "https://patientmanagement-f7751-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "patientmanagement-f7751",
+    "storage_bucket": "patientmanagement-f7751.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:343757020218:android:e94b1a2895b992438d6903",
+        "android_client_info": {
+          "package_name": "com.example.logininterface"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "343757020218-kqm9cifjl0gs02ceo6cr5q4h7p9tc2gb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkhZe1qm03MYftUbVLzkMiIk_kx48FTvo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "343757020218-kqm9cifjl0gs02ceo6cr5q4h7p9tc2gb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:343757020218:android:3d582d661febc2758d6903",
+        "android_client_info": {
+          "package_name": "com.package.database"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "343757020218-kqm9cifjl0gs02ceo6cr5q4h7p9tc2gb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkhZe1qm03MYftUbVLzkMiIk_kx48FTvo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "343757020218-kqm9cifjl0gs02ceo6cr5q4h7p9tc2gb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
