@@ -45,7 +45,6 @@ public class AddPatient extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private String uNume,uPrenume,uDataNasterii,uAdresa,uEmail,uTelefon,uUsername,uId;
     private String id;
-    private String plm;
     private ArrayList PatientIdList;
     private CollectionReference itemref;
     private String idBun;
@@ -196,7 +195,7 @@ public class AddPatient extends AppCompatActivity {
         if(!nume1.isEmpty() && !prenume1.isEmpty() && !dataNasterii1.isEmpty() && !adresa1.isEmpty() && !email1.isEmpty() && !telefon1.isEmpty() && !username1.isEmpty())
         {
             HashMap<String,Object> map=new HashMap<>();
-            map.put("id",id);
+           // map.put("id",id);
             map.put("nume",nume1);
             map.put("prenume",prenume1);
             map.put("dataNasterii",dataNasterii1);
@@ -232,6 +231,7 @@ public class AddPatient extends AppCompatActivity {
         }
     }
 
+    /*
     private String showId(String email)
     {
         final String[] id = new String[1];
@@ -259,7 +259,7 @@ public class AddPatient extends AppCompatActivity {
         });
         return id[0];
     }
-
+    */
     private void readId(String email,FirestoreCallback firestoreCallback)
     {
       //  PatientIdList=new ArrayList();

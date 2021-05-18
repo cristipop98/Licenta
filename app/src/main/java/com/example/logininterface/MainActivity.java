@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.example.R;
 import com.example.admininterface.Admin;
+import com.example.doctorinterface.DoctorInterface;
+import com.example.patientinterface.PatientInterface;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -63,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                                 Toast.makeText(MainActivity.this, "Logged in Succesfully", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(getApplicationContext(), Admin.class));
+                                startActivity(new Intent(getApplicationContext(), PatientInterface.class));
 
                         }
                         else

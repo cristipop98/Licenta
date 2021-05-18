@@ -22,8 +22,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:subtitleTextAppearance="@style/TextAppearance.AppCompat.Display1"
         app:title="Adauga Pacient"
-        app:titleMarginStart="100dp"
-        app:titleTextAppearance="@style/TextAppearance.AppCompat.Display1" />
+        app:titleMarginStart="125dp"
+        app:titleTextAppearance="@style/TextAppearance.AppCompat.Medium" />
 
 
     <EditText

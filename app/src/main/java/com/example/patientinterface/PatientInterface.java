@@ -1,4 +1,4 @@
-package com.example.logininterface;
+package com.example.patientinterface;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.R;
+import com.example.logininterface.MainActivity;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -29,6 +30,7 @@ public class PatientInterface extends AppCompatActivity {
         setContentView(R.layout.activity_patient_interface);
 
         btnDisconnect=findViewById(R.id.btnDeconectare);
+        btnProgramare=findViewById(R.id.butonProgramareConsultatie);
 
         fAuth=FirebaseAuth.getInstance();
 
@@ -39,10 +41,17 @@ public class PatientInterface extends AppCompatActivity {
                 {
                     fAuth.getInstance().signOut();
                 }
-                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 finish();
 
 
+            }
+        });
+
+        btnProgramare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), ListaDoctoriProgramare.class));
             }
         });
     }

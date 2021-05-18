@@ -7,11 +7,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/cornflowerblue"
         android:orientation="vertical"
         android:padding="5dp">
 
         <TextView
-            android:id="@+id/nume_text1"
+            android:id="@+id/nume_text_doctor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/purple_500"
@@ -20,7 +21,7 @@
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/prenume_text1"
+            android:id="@+id/prenume_text_doctor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/purple_500"
@@ -29,7 +30,7 @@
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/telefon_text1"
+            android:id="@+id/telefon_text_doctor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/purple_500"
@@ -38,7 +39,7 @@
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/mail_text1"
+            android:id="@+id/mail_text_doctor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/purple_500"
@@ -47,7 +48,7 @@
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/specializare_text"
+            android:id="@+id/specializare_text_doctor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/purple_500"

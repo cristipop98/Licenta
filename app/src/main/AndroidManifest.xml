@@ -9,20 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LoginInterface">
-        <activity android:name=".admininterface.AddDoctor"></activity>
+        <activity android:name=".patientinterface.ListaDoctoriProgramare"></activity>
+        <activity android:name=".doctorinterface.DoctorInterface" />
+        <activity android:name=".patientinterface.CalendarProgramare" />
+        <activity android:name=".patientinterface.ListaDoctori" />
+        <activity android:name=".admininterface.AddDoctor" />
         <activity android:name=".admininterface.AddPatient" />
         <activity
             android:name=".admininterface.Admin"
             android:label="@string/title_activity_admin"
             android:theme="@style/Theme.LoginInterface.NoActionBar" />
-        <activity android:name=".logininterface.PatientInterface" />
-        <activity android:name=".logininterface.Register">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".patientinterface.PatientInterface" />
+        <activity android:name=".logininterface.Register" />
         <activity android:name=".logininterface.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

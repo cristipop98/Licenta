@@ -3,6 +3,7 @@ package com.example.admininterface;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,11 +12,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -34,7 +42,7 @@ public class DoctorFragment extends Fragment {
     List<DoctorModel> doctorModels;
     private FirebaseFirestore firebaseFirestore;
     private CollectionReference patientCollection;
-    private PatientAdapter patientAdapter;
+    private DoctorAdapter doctorAdapter;
     private View view;
     private Button btnAdauga;
 
@@ -70,7 +78,13 @@ public class DoctorFragment extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+
+
         }
+        doctorModels=new ArrayList<>();
+
+        firebaseFirestore=FirebaseFirestore.getInstance();
+        showData();
     }
 
     @Override
@@ -78,10 +92,15 @@ public class DoctorFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view=inflater.inflate(R.layout.fragment_doctor, container, false);
-        //patientAdapter=new PatientAdapter(getContext(),doctorModels);
+        doctorAdapter=new DoctorAdapter(getContext(), doctorModels, new DoctorAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(DoctorModel item) {
+                Toast.makeText(getContext(),"Un click",Toast.LENGTH_SHORT).show();
+            }
+        });
         recyclerView=(RecyclerView) view.findViewById(R.id.DoctorRecycleView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setAdapter(patientAdapter);
+        recyclerView.setAdapter(doctorAdapter);
 
         btnAdauga=view.findViewById(R.id.btnAddDoctor);
 
@@ -94,5 +113,35 @@ public class DoctorFragment extends Fragment {
 
 
         return view;
+    }
+    public void showData()
+    {
+        firebaseFirestore.collection("doctor").get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            doctorModels.clear();
+                            for (DocumentSnapshot snapshot : task.getResult()) {
+                                DoctorModel model = new DoctorModel(snapshot.getString("nume"), snapshot.getString("prenume"),
+                                        snapshot.getString("telefon"),snapshot.getString("email"),
+                                        snapshot.getString("specializare"));
+
+
+
+
+                                doctorModels.add(model);
+                            }
+                            doctorAdapter.notifyDataSetChanged();
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getActivity(),"Eroare la introducerea datelor",Toast.LENGTH_SHORT).show();
+            }
+
+        });
+
     }
 }

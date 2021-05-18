@@ -1,8 +1,10 @@
 package com.example.admininterface;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.R;
+import com.example.logininterface.MainActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
@@ -15,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.admininterface.ui.main.SectionsPagerAdapter;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Admin extends AppCompatActivity {
 
@@ -29,11 +32,17 @@ public class Admin extends AppCompatActivity {
         tabs.setupWithViewPager(viewPager);
         FloatingActionButton fab = findViewById(R.id.fab);
 
+        FirebaseAuth fAuth=FirebaseAuth.getInstance();
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                if(fAuth.getCurrentUser()!=null)
+                {
+                    fAuth.getInstance().signOut();
+                }
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                finish();
             }
         });
     }
