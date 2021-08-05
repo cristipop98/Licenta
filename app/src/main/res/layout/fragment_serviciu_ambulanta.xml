@@ -16,4 +16,22 @@
         android:text="Serviciu Ambulanta"
         android:textAlignment="center" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ServiciuAmbulantaRecycleView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/cornflowerblue" />
+
+    <Button
+        android:id="@+id/btnAddServiciuAmbulanta"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="120dp"
+        android:layout_marginEnd="121dp"
+        android:layout_marginBottom="78dp"
+        android:text="Add" />
+
 </RelativeLayout>

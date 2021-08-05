@@ -42,14 +42,13 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.MyViewHo
         PatientModel model=patientModelList.get(position);
         Bundle bundle=new Bundle();
         UUID id=model.getIdd();
-        bundle.putString("id", String.valueOf(id));
+       // bundle.putString("id", String.valueOf(id));
         bundle.putString("nume",model.getNume());
         bundle.putString("prenume",model.getPrenume());
         bundle.putString("dataNasterii",model.getDataNasterii());
         bundle.putString("adresa",model.getAdresa());
         bundle.putString("email",model.getEmail());
         bundle.putString("telefon",model.getTelefon());
-        bundle.putString("username",model.getUsername());
         Intent intent=new Intent(context,AddPatient.class);
         intent.putExtras(bundle);
         context.startActivity(intent);
@@ -60,11 +59,13 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.MyViewHo
     public void deleteData(int position)
     {
         PatientModel model=patientModelList.get(position);
-        readId(model.getEmail(), new FirestoreCallback() {
+        readId(model.getTelefon(), new FirestoreCallback() {
             @Override
             public void onCallback(String idBun) {
                 Log.d("id",idBun);
-                firebaseFirestore.collection("patient").document("pm").delete()
+                firebaseFirestore.collection("users").document(idBun).delete();
+
+                firebaseFirestore.collection("patient").document(idBun).delete()
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
@@ -155,10 +156,11 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.MyViewHo
                     {
                         PatientModel model = new PatientModel(snapshot.getString("nume"), snapshot.getString("prenume"),
                                 snapshot.getString("dataNasterii"), snapshot.getString("adresa"), snapshot.getString("email"), snapshot.getString("telefon"),
-                                snapshot.getString("username"), snapshot.getString("password"));
+                                snapshot.getString("password"));
 
                           //Log.d("idCeva",snapshot.getId());
-                          //Log.d("email",model.getTelefon());
+                         // Log.d("email",model.getTelefon());
+                          //Log.d("email1",email);
 
                         if(model.getTelefon().equals(email))
                         {

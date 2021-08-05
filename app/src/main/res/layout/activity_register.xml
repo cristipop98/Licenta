@@ -137,28 +137,12 @@
         android:layout_marginStart="64dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="84dp"
-        android:layout_marginBottom="5dp"
         android:ems="10"
         android:hint="Telefon"
         android:inputType="phone"
-        app:layout_constraintBottom_toTopOf="@+id/pAddNumeUtilizator"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pAddEmail" />
-
-    <EditText
-        android:id="@+id/pAddNumeUtilizator"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="84dp"
-        android:ems="10"
-        android:hint="Username"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pAddTelefon" />
 
     <EditText
         android:id="@+id/pAddParolaUtilizator"
@@ -172,7 +156,7 @@
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pAddNumeUtilizator" />
+        app:layout_constraintTop_toBottomOf="@+id/pAddTelefon" />
 
     <Button
         android:id="@+id/buttonAdauga"
@@ -181,7 +165,7 @@
         android:layout_marginStart="120dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="136dp"
-        android:layout_marginBottom="86dp"
+        android:layout_marginBottom="30dp"
         android:text="Creare"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

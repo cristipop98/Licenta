@@ -26,7 +26,7 @@ import java.util.Map;
 
 
 public class Register extends AppCompatActivity {
-    EditText nume,prenume,dataNasterii,email,adresa,telefon,numeUtilizator,parolaUtilizator;
+    EditText nume,prenume,dataNasterii,email,adresa,telefon,parolaUtilizator;
     Button butonCreare;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
@@ -44,7 +44,6 @@ public class Register extends AppCompatActivity {
         adresa=findViewById(R.id.pAddAdresa);
         email=findViewById(R.id.pAddEmail);
         telefon=findViewById(R.id.pAddTelefon);
-        numeUtilizator=findViewById(R.id.pAddNumeUtilizator);
         parolaUtilizator=findViewById(R.id.pAddParolaUtilizator);
 
         butonCreare=findViewById(R.id.buttonAdauga);
@@ -68,7 +67,6 @@ public class Register extends AppCompatActivity {
                 String birthDate=dataNasterii.getText().toString();
                 String adress=adresa.getText().toString();
                 String phone=telefon.getText().toString();
-                String utilizator=numeUtilizator.getText().toString();
 
                 if(TextUtils.isEmpty(mail)){
                     email.setError("Email is Required");
@@ -98,8 +96,14 @@ public class Register extends AppCompatActivity {
                             patient.put("dataNasterii",birthDate);
                             patient.put("adresa",adress);
                             patient.put("telefon",phone);
-                            patient.put("email",mail);
-                            patient.put("username",utilizator);
+                            DocumentReference documentReference1=fStore.collection("users").document(userID);
+                            Map<String,Object> user=new HashMap<>();
+                            user.put("email",mail);
+                            user.put("password",parola);
+                            user.put("type","patient");
+                           // patient.put("email",mail);
+                            //patient.put("username",utilizator);
+                            documentReference1.set(user);
                             documentReference.set(patient).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {

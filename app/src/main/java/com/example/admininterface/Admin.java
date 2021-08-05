@@ -6,14 +6,11 @@ import android.os.Bundle;
 import com.example.R;
 import com.example.logininterface.MainActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 
 import com.example.admininterface.ui.main.SectionsPagerAdapter;
@@ -30,7 +27,7 @@ public class Admin extends AppCompatActivity {
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
-        FloatingActionButton fab = findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab1);
 
         FirebaseAuth fAuth=FirebaseAuth.getInstance();
 

@@ -7,11 +7,13 @@ public class ServiciuAmbulantaModel {
     String nume;
     boolean disponibilitate;
     String mail;
+    String telefon;
 
-    public ServiciuAmbulantaModel(String nume, boolean disponibilitate, String mail) {
+    public ServiciuAmbulantaModel(String nume, boolean disponibilitate, String mail,String telefon) {
         this.nume = nume;
         this.disponibilitate = disponibilitate;
         this.mail = mail;
+        this.telefon=telefon;
     }
 
     public UUID getId() {
@@ -44,5 +46,13 @@ public class ServiciuAmbulantaModel {
 
     public void setMail(String mail) {
         this.mail = mail;
+    }
+
+    public String getTelefon() {
+        return telefon;
+    }
+
+    public void setTelefon(String telefon) {
+        this.telefon = telefon;
     }
 }

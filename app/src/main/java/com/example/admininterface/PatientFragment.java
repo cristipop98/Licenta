@@ -144,7 +144,7 @@ public class PatientFragment extends Fragment {
                             for (DocumentSnapshot snapshot : task.getResult()) {
                                 PatientModel model = new PatientModel(snapshot.getString("nume"), snapshot.getString("prenume"),
                                         snapshot.getString("dataNasterii"), snapshot.getString("adresa"), snapshot.getString("email"), snapshot.getString("telefon"),
-                                        snapshot.getString("username"), snapshot.getString("password"));
+                                        snapshot.getString("password"));
 
 
 

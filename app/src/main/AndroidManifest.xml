@@ -9,7 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LoginInterface">
-        <activity android:name=".patientinterface.ListaDoctoriProgramare"></activity>
+        <activity android:name=".doctorinterface.ListaPacientiFisa"></activity>
+        <activity android:name=".patientinterface.FisaMedicala" />
+        <activity android:name=".doctorinterface.AddFisaMedicala" />
+        <activity android:name=".admininterface.AddServiciuAmbulanta" />
+        <activity android:name=".doctorinterface.ListaPacienti" />
+        <activity android:name=".logininterface.ResetPassword" />
+        <activity android:name=".patientinterface.Mesaj" />
+        <activity android:name=".patientinterface.ListaDoctoriMesaj" />
+        <activity android:name=".patientinterface.ListaDoctoriProgramare" />
         <activity android:name=".doctorinterface.DoctorInterface" />
         <activity android:name=".patientinterface.CalendarProgramare" />
         <activity android:name=".patientinterface.ListaDoctori" />

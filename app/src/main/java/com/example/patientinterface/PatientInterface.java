@@ -21,7 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class PatientInterface extends AppCompatActivity {
 
-    Button btnProgramare,btnDisconnect;
+    Button btnProgramare,btnDisconnect,btnChat,btnFisa;
     FirebaseAuth fAuth;
 
     @Override
@@ -31,6 +31,8 @@ public class PatientInterface extends AppCompatActivity {
 
         btnDisconnect=findViewById(R.id.btnDeconectare);
         btnProgramare=findViewById(R.id.butonProgramareConsultatie);
+        btnChat=findViewById(R.id.btnMesaj);
+        btnFisa=findViewById(R.id.butonFisaMedicala);
 
         fAuth=FirebaseAuth.getInstance();
 
@@ -52,6 +54,20 @@ public class PatientInterface extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), ListaDoctoriProgramare.class));
+            }
+        });
+
+        btnChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),ListaDoctoriMesaj.class));
+            }
+        });
+
+        btnFisa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),FisaMedicala.class));
             }
         });
     }

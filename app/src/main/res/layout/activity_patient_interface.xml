@@ -116,4 +116,18 @@
         app:rippleColor="@color/red"
         app:strokeColor="@color/red" />
 
+    <Button
+        android:id="@+id/btnMesaj"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="117dp"
+        android:layout_marginBottom="148dp"
+        android:text="Chat"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnDeconectare" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

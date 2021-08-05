@@ -13,17 +13,15 @@ public class PatientModel {
     String adresa;
     String telefon;
     String email;
-    String username;
     String password;
 
-    public PatientModel(String nume, String prenume, String dataNasterii, String adresa, String telefon, String email, String username, String password) {
+    public PatientModel(String nume, String prenume, String dataNasterii, String adresa, String telefon, String email, String password) {
         this.nume = nume;
         this.prenume = prenume;
         this.dataNasterii = dataNasterii;
         this.adresa = adresa;
         this.telefon = telefon;
         this.email = email;
-        this.username = username;
         this.password = password;
     }
     public PatientModel()
@@ -84,14 +82,6 @@ public class PatientModel {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getPassword() {

@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserInfo;
@@ -40,10 +41,10 @@ import java.util.UUID;
 public class AddPatient extends AppCompatActivity {
 
     private Button btnAdauga;
-    private EditText nume,prenume,dataNasterii,adresa,email,telefon,username,parola;
+    private EditText nume,prenume,dataNasterii,adresa,email,telefon,parola;
     private FirebaseFirestore firebaseFirestore;
     private FirebaseAuth firebaseAuth;
-    private String uNume,uPrenume,uDataNasterii,uAdresa,uEmail,uTelefon,uUsername,uId;
+    private String uNume,uPrenume,uDataNasterii,uAdresa,uEmail,uTelefon,uId;
     private String id;
     private ArrayList PatientIdList;
     private CollectionReference itemref;
@@ -62,7 +63,6 @@ public class AddPatient extends AppCompatActivity {
         adresa=findViewById(R.id.pAddAdresa);
         email=findViewById(R.id.pAddEmail);
         telefon=findViewById(R.id.pAddTelefon);
-        username=findViewById(R.id.pAddNumeUtilizator);
         parola=findViewById(R.id.pAddParolaUtilizator);
         btnAdauga=findViewById(R.id.buttonAdauga);
        // toolbar=findViewById(R.id.toolbarAdaugaPacient);
@@ -82,7 +82,6 @@ public class AddPatient extends AppCompatActivity {
             uAdresa=bundle.getString("adresa");
             uEmail=bundle.getString("email");
             uTelefon=bundle.getString("telefon");
-            uUsername=bundle.getString("username");
 
             nume.setText(uNume);
             prenume.setText(uPrenume);
@@ -90,7 +89,6 @@ public class AddPatient extends AppCompatActivity {
             adresa.setText(uAdresa);
             email.setText(uTelefon);
             telefon.setText(uEmail);
-            username.setText(uUsername);
 
             //showId(uEmail);
 
@@ -119,7 +117,6 @@ public class AddPatient extends AppCompatActivity {
                 String adresa1=adresa.getText().toString();
                 String email1=email.getText().toString();
                 String telefon1=telefon.getText().toString();
-                String username1=username.getText().toString();
                 String parola1=parola.getText().toString();
 
                 Bundle bundle1=getIntent().getExtras();
@@ -131,8 +128,7 @@ public class AddPatient extends AppCompatActivity {
                     readId(email1,new FirestoreCallback(){
                         @Override
                         public void onCallback(String id) {
-                          //  Log.d("id",id);
-                            UpdateToFireStore(id,nume1,prenume1,dataNasterii1,adresa1,email1,telefon1,username1);
+                            UpdateToFireStore(id,nume1,prenume1,dataNasterii1,adresa1,email1,telefon1);
                         }
                     });
 
@@ -144,11 +140,23 @@ public class AddPatient extends AppCompatActivity {
                 }
                 else
                 {
-                    firebaseAuth.createUserWithEmailAndPassword(email1,parola1);
+                    firebaseAuth.createUserWithEmailAndPassword(email1,parola1).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful())
+                        {
+                            FirebaseUser user=task.getResult().getUser();
 
-                    String id=firebaseAuth.getCurrentUser().getUid();
+                            String id=user.getUid();
 
-                    AddToFirestore(id,nume1,prenume1,dataNasterii1,adresa1,email1,telefon1,username1);
+                            AddToFirestore(id,nume1,prenume1,dataNasterii1,adresa1,email1,telefon1,parola1);
+
+
+                        }
+
+                    }
+                });
+
 
                 }
 
@@ -160,10 +168,10 @@ public class AddPatient extends AppCompatActivity {
 
     }
 
-    private void UpdateToFireStore(String id,String nume,String prenume,String dataNasterii,String adresa,String email,String telefon,String username)
+    private void UpdateToFireStore(String id,String nume,String prenume,String dataNasterii,String adresa,String email,String telefon)
     {
 
-        firebaseFirestore.collection("patient").document(id).update("nume",nume,"prenume",prenume,"dataNasterii",dataNasterii,"adresa",adresa,"email",email,"telefon",telefon,"username",username)
+        firebaseFirestore.collection("patient").document(id).update("nume",nume,"prenume",prenume,"dataNasterii",dataNasterii,"adresa",adresa,"email",email,"telefon",telefon)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -190,9 +198,9 @@ public class AddPatient extends AppCompatActivity {
     }
 
 
-    private void AddToFirestore(String id,String nume1,String prenume1,String dataNasterii1,String adresa1,String email1,String telefon1,String username1)
+    private void AddToFirestore(String id,String nume1,String prenume1,String dataNasterii1,String adresa1,String email1,String telefon1,String parola1)
     {
-        if(!nume1.isEmpty() && !prenume1.isEmpty() && !dataNasterii1.isEmpty() && !adresa1.isEmpty() && !email1.isEmpty() && !telefon1.isEmpty() && !username1.isEmpty())
+        if(!nume1.isEmpty() && !prenume1.isEmpty() && !dataNasterii1.isEmpty() && !adresa1.isEmpty() && !email1.isEmpty() && !telefon1.isEmpty() && !parola1.isEmpty())
         {
             HashMap<String,Object> map=new HashMap<>();
            // map.put("id",id);
@@ -202,9 +210,13 @@ public class AddPatient extends AppCompatActivity {
             map.put("adresa",adresa1);
             map.put("email",email1);
             map.put("telefon",telefon1);
-            map.put("username",username1);
 
+            HashMap<String,Object> mapUser=new HashMap<>();
+            mapUser.put("email",email1);
+            mapUser.put("password",parola1);
+            mapUser.put("type","patient");
 
+            firebaseFirestore.collection("users").document(id).set(mapUser);
 
             firebaseFirestore.collection("patient").document(id).set(map)
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -274,10 +286,13 @@ public class AddPatient extends AppCompatActivity {
                     {
                         PatientModel model = new PatientModel(snapshot.getString("nume"), snapshot.getString("prenume"),
                                 snapshot.getString("dataNasterii"), snapshot.getString("adresa"), snapshot.getString("email"), snapshot.getString("telefon"),
-                                snapshot.getString("username"), snapshot.getString("password"));
+                                 snapshot.getString("password"));
 
-                      //  Log.d("idCeva",snapshot.getId());
-                      //  Log.d("email",model.getTelefon());
+                        //Log.d("idCeva",email);
+                        if(email!=null)
+                        Log.d("email",email);
+                        if(model.getTelefon()!=null)
+                            Log.d("email1",model.getTelefon());
 
                         if(model.getTelefon().equals(email))
                         {

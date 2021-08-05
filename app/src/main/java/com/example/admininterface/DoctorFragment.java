@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -101,6 +102,9 @@ public class DoctorFragment extends Fragment {
         recyclerView=(RecyclerView) view.findViewById(R.id.DoctorRecycleView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(doctorAdapter);
+
+        ItemTouchHelper itemTouchHelper=new ItemTouchHelper(new TouchHelperDoctor(doctorAdapter));
+        itemTouchHelper.attachToRecyclerView(recyclerView);
 
         btnAdauga=view.findViewById(R.id.btnAddDoctor);
 

@@ -21,6 +21,8 @@
         app:title="Pagina Doctor"
         app:titleMarginStart="130dp" />
 
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -29,7 +31,7 @@
         android:orientation="horizontal" >
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/btnVizualizareProgramare"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1.0"
@@ -39,7 +41,7 @@
             android:textAlignment="center" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btnVizualizarePacienti"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1.0"
@@ -57,7 +59,7 @@
         android:orientation="horizontal" >
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/btnEditareFisaMedicala"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@android:color/holo_blue_light"
@@ -66,7 +68,7 @@
             android:text="Editare fisa medicala" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/btnPrescriereMedicamente"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@android:color/holo_red_light"
@@ -74,5 +76,15 @@
             android:drawableTop="@drawable/ic_baseline_medical_services_24"
             android:text="Prescriere medicamente" />
 
+
     </LinearLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:backgroundTint="#F60505"
+        app:srcCompat="@drawable/ic_baseline_exit_to_app_24" />
+
 </LinearLayout>
