@@ -1,0 +1,438 @@
+@startuml
+
+title __LOGININTERFACE.APP's Class Diagram__\n
+
+  namespace com.example {
+    class com.example.BuildConfig {
+    }
+  }
+  
+
+  namespace com.example {
+    class com.example.MyFirebaseInstanceIDService {
+    }
+  }
+  
+
+  namespace com.example {
+    namespace admininterface {
+      class com.example.admininterface.AddDoctor {
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace admininterface {
+      class com.example.admininterface.AddPatient {
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace admininterface {
+      class com.example.admininterface.AddServiciuAmbulanta {
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace admininterface {
+      class com.example.admininterface.Admin {
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace admininterface {
+      class com.example.admininterface.DoctorAdapter {
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace admininterface {
+      class com.example.admininterface.DoctorFragment {
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace admininterface {
+      class com.example.admininterface.DoctorModel {
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace admininterface {
+      class com.example.admininterface.PatientAdapter {
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace admininterface {
+      class com.example.admininterface.PatientFragment {
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace admininterface {
+      class com.example.admininterface.PatientModel {
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace admininterface {
+      class com.example.admininterface.ServiciuAmbulantaAdapter {
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace admininterface {
+      class com.example.admininterface.ServiciuAmbulantaFragment {
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace admininterface {
+      class com.example.admininterface.ServiciuAmbulantaModel {
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace admininterface {
+      class com.example.admininterface.TouchHelper {
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace admininterface {
+      class com.example.admininterface.TouchHelperDoctor {
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace admininterface {
+      class com.example.admininterface.TouchHelperServiciuAmbulanta {
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace admininterface {
+      namespace ui.main {
+        class com.example.admininterface.ui.main.PageViewModel {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace admininterface {
+      namespace ui.main {
+        class com.example.admininterface.ui.main.PlaceholderFragment {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace admininterface {
+      namespace ui.main {
+        class com.example.admininterface.ui.main.SectionsPagerAdapter {
+        }
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace doctorinterface {
+      class com.example.doctorinterface.AddFisaMedicala {
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace doctorinterface {
+      class com.example.doctorinterface.AddPrescriptie {
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace doctorinterface {
+      class com.example.doctorinterface.DoctorInterface {
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace doctorinterface {
+      class com.example.doctorinterface.ListaPacienti {
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace doctorinterface {
+      class com.example.doctorinterface.ListaPacientiFisa {
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace doctorinterface {
+      class com.example.doctorinterface.PatientAdapterMesaj {
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace doctorinterface {
+      class com.example.doctorinterface.PrescriptieModel {
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace logininterface {
+      class com.example.logininterface.MainActivity {
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace logininterface {
+      class com.example.logininterface.Register {
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace logininterface {
+      class com.example.logininterface.ResetPassword {
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace patientinterface {
+      class com.example.patientinterface.CalendarProgramare {
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace patientinterface {
+      class com.example.patientinterface.DoctorAdapterMesaj {
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace patientinterface {
+      class com.example.patientinterface.FisaMedicala {
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace patientinterface {
+      class com.example.patientinterface.FisaMedicalaModel {
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace patientinterface {
+      class com.example.patientinterface.ListaDoctori {
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace patientinterface {
+      class com.example.patientinterface.ListaDoctoriMesaj {
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace patientinterface {
+      class com.example.patientinterface.ListaDoctoriProgramare {
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace patientinterface {
+      class com.example.patientinterface.Mesaj {
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace patientinterface {
+      class com.example.patientinterface.MesajModel {
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace patientinterface {
+      class com.example.patientinterface.MessageAdapter {
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace patientinterface {
+      class com.example.patientinterface.PatientInterface {
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace patientinterface {
+      class com.example.patientinterface.ProgramareModel {
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace patientinterface {
+      class com.example.patientinterface.TimeIntervalHelper {
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace patientinterface {
+      class com.example.patientinterface.UrgentaMedicala {
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace serviciuambulantainterface {
+      class com.example.serviciuambulantainterface.ServiciuAmbulantaInterface {
+      }
+    }
+  }
+  
+
+  com.example.MyFirebaseInstanceIDService -up-|> com.google.firebase.messaging.FirebaseMessagingService
+  com.example.admininterface.AddDoctor -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.admininterface.AddPatient -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.admininterface.AddServiciuAmbulanta -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.admininterface.Admin -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.admininterface.DoctorAdapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  com.example.admininterface.DoctorAdapter o-- com.example.admininterface.DoctorAdapter.OnItemClickListener : listener
+  com.example.admininterface.DoctorFragment -up-|> androidx.fragment.app.Fragment
+  com.example.admininterface.DoctorFragment o-- com.example.admininterface.DoctorAdapter : doctorAdapter
+  com.example.admininterface.PatientAdapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  com.example.admininterface.PatientFragment -up-|> androidx.fragment.app.Fragment
+  com.example.admininterface.PatientFragment o-- com.example.admininterface.PatientAdapter : patientAdapter
+  com.example.admininterface.ServiciuAmbulantaAdapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  com.example.admininterface.ServiciuAmbulantaAdapter o-- com.example.admininterface.ServiciuAmbulantaAdapter.OnItemClickListener : listener
+  com.example.admininterface.ServiciuAmbulantaFragment -up-|> androidx.fragment.app.Fragment
+  com.example.admininterface.ServiciuAmbulantaFragment o-- com.example.admininterface.ServiciuAmbulantaAdapter : serviciuAmbulantaAdapter
+  com.example.admininterface.TouchHelper -up-|> androidx.recyclerview.widget.ItemTouchHelper.SimpleCallback
+  com.example.admininterface.TouchHelper o-- com.example.admininterface.PatientAdapter : patientAdapter
+  com.example.admininterface.TouchHelperDoctor -up-|> androidx.recyclerview.widget.ItemTouchHelper.SimpleCallback
+  com.example.admininterface.TouchHelperDoctor o-- com.example.admininterface.DoctorAdapter : doctorAdapter
+  com.example.admininterface.TouchHelperServiciuAmbulanta -up-|> androidx.recyclerview.widget.ItemTouchHelper.SimpleCallback
+  com.example.admininterface.TouchHelperServiciuAmbulanta o-- com.example.admininterface.ServiciuAmbulantaAdapter : serviciuAmbulantaAdapter
+  com.example.admininterface.ui.main.PageViewModel -up-|> androidx.lifecycle.ViewModel
+  com.example.admininterface.ui.main.PlaceholderFragment -up-|> androidx.fragment.app.Fragment
+  com.example.admininterface.ui.main.PlaceholderFragment o-- com.example.admininterface.ui.main.PageViewModel : pageViewModel
+  com.example.admininterface.ui.main.SectionsPagerAdapter -up-|> androidx.fragment.app.FragmentPagerAdapter
+  com.example.doctorinterface.AddFisaMedicala .up.|> android.widget.AdapterView.OnItemSelectedListener
+  com.example.doctorinterface.AddFisaMedicala -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.doctorinterface.AddPrescriptie -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.doctorinterface.DoctorInterface -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.doctorinterface.ListaPacienti -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.doctorinterface.ListaPacienti o-- com.example.doctorinterface.PatientAdapterMesaj : patientAdapter
+  com.example.doctorinterface.ListaPacientiFisa -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.doctorinterface.ListaPacientiFisa o-- com.example.doctorinterface.PatientAdapterMesaj : patientAdapter
+  com.example.doctorinterface.PatientAdapterMesaj -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  com.example.doctorinterface.PatientAdapterMesaj o-- com.example.doctorinterface.PatientAdapterMesaj.OnItemClickListener : listener
+  com.example.logininterface.MainActivity -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.logininterface.Register -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.logininterface.ResetPassword -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.patientinterface.CalendarProgramare -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.patientinterface.DoctorAdapterMesaj -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  com.example.patientinterface.DoctorAdapterMesaj o-- com.example.patientinterface.DoctorAdapterMesaj.OnItemClickListener : listener
+  com.example.patientinterface.FisaMedicala -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.patientinterface.ListaDoctori -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.patientinterface.ListaDoctoriMesaj -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.patientinterface.ListaDoctoriMesaj o-- com.example.patientinterface.DoctorAdapterMesaj : doctorAdapter
+  com.example.patientinterface.ListaDoctoriProgramare -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.patientinterface.ListaDoctoriProgramare o-- com.example.admininterface.DoctorAdapter : doctorAdapter
+  com.example.patientinterface.Mesaj -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.patientinterface.Mesaj o-- com.example.patientinterface.MessageAdapter : messageAdapter
+  com.example.patientinterface.MessageAdapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  com.example.patientinterface.PatientInterface -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.patientinterface.UrgentaMedicala -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.serviciuambulantainterface.ServiciuAmbulantaInterface -up-|> androidx.appcompat.app.AppCompatActivity
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

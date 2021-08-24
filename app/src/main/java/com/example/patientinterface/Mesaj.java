@@ -22,12 +22,14 @@ import com.example.admininterface.AddDoctor;
 import com.example.admininterface.Admin;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -79,11 +81,20 @@ public class Mesaj extends AppCompatActivity {
         linearLayoutManager.setStackFromEnd(true);
         recyclerView.setLayoutManager(linearLayoutManager);
 
+        username.setText(intent.getStringExtra("nume") + " " + intent.getStringExtra("prenume"));
+
 
         firebaseAuth=FirebaseAuth.getInstance().getCurrentUser();
         firebaseFirestore=FirebaseFirestore.getInstance();
 
         readMessage(firebaseAuth.getUid(),idDoctor);
+
+       // firebaseFirestore.collection("doctor").document(idDoctor).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+         //   @Override
+           // public void onSuccess(DocumentSnapshot documentSnapshot) {
+             //   username.setText("Dr."+" "+documentSnapshot.getString("nume") + " " + documentSnapshot.getString("prenume" + "-"+documentSnapshot.getString("specializare")));
+            //}
+        //});
 
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -152,15 +163,12 @@ public class Mesaj extends AppCompatActivity {
                                 String sender = querySnapshot.getString("sender");
                                 String reciever = querySnapshot.getString("reciever");
                                 String message = querySnapshot.getString("message");
-
-
                                 if (sender.equals(myid) && reciever.equals(userId) || sender.equals(userId) && reciever.equals(myid)) {
                                     MesajModel mesajModel = new MesajModel();
                                     mesajModel.setSender(sender);
                                     mesajModel.setReciever(reciever);
                                     mesajModel.setMessage(message);
                                     mesajModels.add(mesajModel);
-                                    
                                 }
                                 messageAdapter = new MessageAdapter(Mesaj.this, mesajModels);
                                 recyclerView.setAdapter(messageAdapter);

@@ -9,11 +9,11 @@ import java.util.UUID;
 public class ProgramareModel {
     UUID id;
     String doctorId;
-    Date dataProgramare;
+    String dataProgramare;
     String pacientId;
 
 
-    public ProgramareModel(String doctorId, Date dataProgramare,String pacientId) {
+    public ProgramareModel(String doctorId, String dataProgramare,String pacientId) {
         this.doctorId = doctorId;
         this.dataProgramare = dataProgramare;
         this.pacientId = pacientId;
@@ -38,11 +38,11 @@ public class ProgramareModel {
         this.doctorId = doctorId;
     }
 
-    public Date getDataProgramare() {
+    public String getDataProgramare() {
         return dataProgramare;
     }
 
-    public void setDataProgramare(Date dataProgramare) {
+    public void setDataProgramare(String dataProgramare) {
         this.dataProgramare = dataProgramare;
     }
 

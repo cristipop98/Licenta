@@ -21,12 +21,17 @@ import android.widget.Toast;
 import com.example.R;
 import com.example.admininterface.AddPatient;
 import com.example.admininterface.Admin;
+import com.example.admininterface.PatientModel;
+import com.example.doctorinterface.ListaPacienti;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.timepicker.TimeFormat;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -40,14 +45,15 @@ import java.util.UUID;
 
 public class CalendarProgramare extends AppCompatActivity {
 
-    EditText date_in;
-    EditText time_in;
+    //EditText date_in;
+    //EditText time_in;
     EditText date_time_in;
     Button btnPorgramare;
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firebaseFirestore;
     Date dateObject,timeObject;
     int x=0;
+    private List<ProgramareModel> programareModels;
 
     private static final int TIME_PICKER_INTERVAL=15;
     private boolean mIgnoreEvent=false;
@@ -56,13 +62,13 @@ public class CalendarProgramare extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
-        date_in=findViewById(R.id.textDate);
-        time_in=findViewById(R.id.textHour);
+        //date_in=findViewById(R.id.textDate);
+       // time_in=findViewById(R.id.textHour);
         date_time_in=findViewById(R.id.textDateHour);
 
         date_time_in.setInputType(InputType.TYPE_NULL);
-        date_in.setInputType(InputType.TYPE_NULL);
-        time_in.setInputType(InputType.TYPE_NULL);
+       // date_in.setInputType(InputType.TYPE_NULL);
+        //time_in.setInputType(InputType.TYPE_NULL);
 
         Intent intent=getIntent();
         String idBun1=intent.getStringExtra("ID");
@@ -72,8 +78,11 @@ public class CalendarProgramare extends AppCompatActivity {
         firebaseAuth=FirebaseAuth.getInstance();
         firebaseFirestore=FirebaseFirestore.getInstance();
 
+        programareModels=new ArrayList<>();
+
 
        // date_time_in.setText(idBun1);
+        /*
 
         date_in.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,6 +98,8 @@ public class CalendarProgramare extends AppCompatActivity {
             }
         });
 
+         */
+
         date_time_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,13 +113,27 @@ public class CalendarProgramare extends AppCompatActivity {
             public void onClick(View v) {
                 String doctorId=idBun1;
                 String pacientId= firebaseAuth.getUid();
-                String dataProgramare= date_in.getText().toString();
-                String oraProgramare=time_in.getText().toString();
-                String oraProgramareEnd=date_time_in.getText().toString();
+              //  String dataProgramare= date_in.getText().toString();
+                //String oraProgramare=time_in.getText().toString();
+                String dataProgramare=date_time_in.getText().toString();
                 String id=UUID.randomUUID().toString();
 
+                showData();
 
-              AddToFirestore(id,dataProgramare,oraProgramare,oraProgramareEnd,doctorId,pacientId);
+                for(ProgramareModel i:programareModels)
+                {
+                    if(i.getDataProgramare().toString().equals(dataProgramare))
+                    {
+                        Toast.makeText(CalendarProgramare.this,"Exista o programare la aceasta ora",Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        AddToFirestore(id, dataProgramare, doctorId, pacientId);
+                    }
+                }
+
+
+
+           //   AddToFirestore(id,dataProgramare,doctorId,pacientId);
 
                 /*
 
@@ -137,27 +162,34 @@ public class CalendarProgramare extends AppCompatActivity {
                 calendar.set(Calendar.YEAR,year);
                 calendar.set(Calendar.MONTH,month);
                 calendar.set(Calendar.DAY_OF_MONTH,dayOfMonth);
-
                 TimePickerDialog.OnTimeSetListener timeSetListener=new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        calendar.set(Calendar.HOUR_OF_DAY,hourOfDay);
-                        calendar.set(Calendar.MINUTE,minute);
+                        if(minute>=0 && minute <30)
+                            minute=0;
+                        else if (minute >=30 && minute<=59)
+                            minute=30;
+                        calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                        calendar.set(Calendar.MINUTE, minute);
 
                         SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yy-MM-dd HH:mm");
 
-                        date_time_in.setText(simpleDateFormat.format(calendar.getTime()));
+                        if(hourOfDay>=16 || hourOfDay<8)
+                        {
+                            Toast.makeText(CalendarProgramare.this,"Interval depasit",Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            date_time_in.setText(simpleDateFormat.format(calendar.getTime()));
+                        }
                     }
                 };
-
-                new TimePickerDialog(CalendarProgramare.this,timeSetListener,calendar.get(Calendar.HOUR_OF_DAY),calendar.get(Calendar.MINUTE),false).show();
+                new TimePickerDialog(CalendarProgramare.this,timeSetListener,calendar.get(Calendar.HOUR_OF_DAY)
+                        ,calendar.get(Calendar.MINUTE),true).show();
             }
         };
-
         new DatePickerDialog(CalendarProgramare.this,dateSetListener,calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH)).show();
-
     }
-
+    /*
     private void showTimeDialog(final EditText time_in) {
         final Calendar calendar=Calendar.getInstance();
 
@@ -165,7 +197,10 @@ public class CalendarProgramare extends AppCompatActivity {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
 
-                
+                if(minute>=0 && minute <30)
+                    minute=30;
+                else if (minute >=30 && minute<=59)
+                    minute=0;
                 calendar.set(Calendar.HOUR_OF_DAY,hourOfDay);
                 calendar.set(Calendar.MINUTE,minute);
                 SimpleDateFormat simpleDateFormat=new SimpleDateFormat("HH:mm");
@@ -194,15 +229,15 @@ public class CalendarProgramare extends AppCompatActivity {
         new DatePickerDialog(CalendarProgramare.this,dateSetListener,calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH)).show();
     }
 
-    private void AddToFirestore(String id,String dataProgramare,String oraProgramareStart,String oraProgramareEnd,String doctorId,String pacientId)
+     */
+
+    private void AddToFirestore(String id,String dataProgramare,String doctorId,String pacientId)
     {
-        if(!dataProgramare.isEmpty() && !oraProgramareStart.isEmpty() && !oraProgramareEnd.isEmpty() && !doctorId.isEmpty() && !pacientId.isEmpty())
+        if(!dataProgramare.isEmpty() && !doctorId.isEmpty() && !pacientId.isEmpty())
         {
             HashMap<String,Object> map=new HashMap<>();
           //  map.put("id",id);
             map.put("dataProgramare",dataProgramare);
-            map.put("oraProgramareStart",oraProgramareStart);
-            map.put("oraProgramareEnd",oraProgramareEnd);
             map.put("doctorId",doctorId);
             map.put("pacientId",pacientId);
 
@@ -230,6 +265,33 @@ public class CalendarProgramare extends AppCompatActivity {
         {
             Toast.makeText(this,"You must complete all fields",Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void showData()
+    {
+        firebaseFirestore.collection("programare").get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            programareModels.clear();
+                            for (DocumentSnapshot snapshot : task.getResult()) {
+                                ProgramareModel model = new ProgramareModel(snapshot.getString("pacientId"), snapshot.getString("dataProgramare"),
+                                        snapshot.getString("doctorId"));
+
+                                programareModels.add(model);
+                               // Log.d("DataProgramare",model.getDataProgramare().toString());
+                            }
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(CalendarProgramare.this,"Eroare la introducerea datelor",Toast.LENGTH_SHORT).show();
+            }
+
+        });
+
     }
 
 

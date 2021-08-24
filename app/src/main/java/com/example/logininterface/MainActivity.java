@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,6 +17,7 @@ import com.example.R;
 import com.example.admininterface.Admin;
 import com.example.doctorinterface.DoctorInterface;
 import com.example.patientinterface.PatientInterface;
+import com.example.serviciuambulantainterface.ServiciuAmbulantaInterface;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -24,12 +26,14 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class MainActivity extends AppCompatActivity {
     EditText email,parolaUtilizator;
     Button butonLogare,btnCreareCont;
     FirebaseAuth fAuth;
     TextView forgotPassword;
+    private static final String TAG = "MyFirebaseMsgService";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
         forgotPassword=findViewById(R.id.textResetPassword);
 
         fAuth=FirebaseAuth.getInstance();
+
+
 
         butonLogare.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,8 +72,6 @@ public class MainActivity extends AppCompatActivity {
                     parolaUtilizator.setError("Password must be at least 6 characters");
                     return;
                 }
-
-
                 fAuth.signInWithEmailAndPassword(mail,parola).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -98,6 +102,11 @@ public class MainActivity extends AppCompatActivity {
                                             {
                                                 Toast.makeText(MainActivity.this, "Logged in Succesfully", Toast.LENGTH_SHORT).show();
                                                 startActivity(new Intent(getApplicationContext(), Admin.class));
+                                            }
+                                            else if(type.equals("ambulanta"))
+                                            {
+                                                Toast.makeText(MainActivity.this, "Logged in Succesfully", Toast.LENGTH_SHORT).show();
+                                                startActivity(new Intent(getApplicationContext(), ServiciuAmbulantaInterface.class));
                                             }
 
                                         }

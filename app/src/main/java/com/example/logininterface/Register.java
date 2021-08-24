@@ -101,21 +101,17 @@ public class Register extends AppCompatActivity {
                             user.put("email",mail);
                             user.put("password",parola);
                             user.put("type","patient");
-                           // patient.put("email",mail);
-                            //patient.put("username",utilizator);
                             documentReference1.set(user);
                             documentReference.set(patient).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     Log.d("TAG","onSuccess:patient Profile is created for" +userID);
-
                                 }
                             });
                             startActivity(new Intent(getApplicationContext(),MainActivity.class));
                         }
                         else{
                             Toast.makeText(Register.this,"Error!" + task.getException().getMessage(),Toast.LENGTH_SHORT).show();
-
                         }
 
                     }

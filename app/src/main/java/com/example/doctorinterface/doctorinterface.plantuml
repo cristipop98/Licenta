@@ -1,0 +1,207 @@
+@startuml
+
+title __DOCTORINTERFACE's Class Diagram__\n
+
+  namespace com.example {
+    namespace doctorinterface {
+      class com.example.doctorinterface.AddFisaMedicala {
+          - alergii : EditText
+          - btnAdauga : Button
+          - dataConsultatie : EditText
+          - diagnostic : EditText
+          - firebaseAuth : FirebaseAuth
+          - firebaseFirestore : FirebaseFirestore
+          - greutate : EditText
+          - grupaSanguina : EditText
+          - idBun : String
+          - inaltime : EditText
+          - intolerante : EditText
+          - spinner : Spinner
+          - spinnerArray : List<String>
+          - toolbar : Toolbar
+          + onItemSelected()
+          + onNothingSelected()
+          # onCreate()
+          - AddToFirestore()
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace doctorinterface {
+      class com.example.doctorinterface.AddPrescriptie {
+          - PatientIdList : ArrayList
+          - administare : EditText
+          - btnAdauga : Button
+          - efecteSecundare : EditText
+          - firebaseAuth : FirebaseAuth
+          - firebaseFirestore : FirebaseFirestore
+          - id : String
+          - idBun : String
+          - itemref : CollectionReference
+          - nume : EditText
+          - pret : EditText
+          - toolbar : Toolbar
+          - uAdministrare : String
+          - uEfecteSecundare : String
+          - uId : String
+          - uNume : String
+          - uPret : String
+          # onCreate()
+          - AddToFirestore()
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace doctorinterface {
+      class com.example.doctorinterface.DoctorInterface {
+          ~ btnFise : Button
+          ~ btnMedicamente : Button
+          ~ btnPacienti : Button
+          ~ btnProgramari : Button
+          # onCreate()
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace doctorinterface {
+      class com.example.doctorinterface.ListaPacienti {
+          ~ patientModels : List<PatientModel>
+          - firebaseFirestore : FirebaseFirestore
+          - idBun : String
+          - recyclerView : RecyclerView
+          + showData()
+          # onCreate()
+          - readId()
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace doctorinterface {
+      interface com.example.doctorinterface.ListaPacienti.FirestoreCallback {
+          {abstract} + onCallback()
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace doctorinterface {
+      class com.example.doctorinterface.ListaPacientiFisa {
+          ~ patientModels : List<PatientModel>
+          - firebaseFirestore : FirebaseFirestore
+          - idBun : String
+          - recyclerView : RecyclerView
+          + showData()
+          # onCreate()
+          - readId()
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace doctorinterface {
+      interface com.example.doctorinterface.ListaPacientiFisa.FirestoreCallback {
+          {abstract} + onCallback()
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace doctorinterface {
+      class com.example.doctorinterface.PatientAdapterMesaj {
+          ~ context : Context
+          - firebaseFirestore : FirebaseFirestore
+          - patientModelList : List<PatientModel>
+          + PatientAdapterMesaj()
+          + getItemCount()
+          + onBindViewHolder()
+          + onCreateViewHolder()
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace doctorinterface {
+      class com.example.doctorinterface.PatientAdapterMesaj.MyViewHolder {
+          + imageView : ImageView
+          - nume : TextView
+          + MyViewHolder()
+          + bind()
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace doctorinterface {
+      interface com.example.doctorinterface.PatientAdapterMesaj.OnItemClickListener {
+          {abstract} + onItemClick()
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace doctorinterface {
+      class com.example.doctorinterface.PrescriptieModel {
+          - administrare : String
+          - efecteSecundare : String
+          - id : UUID
+          - nume : String
+          - patientID : String
+          - pret : int
+          + PrescriptieModel()
+          + PrescriptieModel()
+          + getAdministrare()
+          + getEfecteSecundare()
+          + getId()
+          + getNume()
+          + getPatientID()
+          + getPret()
+          + setAdministrare()
+          + setEfecteSecundare()
+          + setId()
+          + setNume()
+          + setPatientID()
+          + setPret()
+      }
+    }
+  }
+  
+
+  com.example.doctorinterface.AddFisaMedicala .up.|> android.widget.AdapterView.OnItemSelectedListener
+  com.example.doctorinterface.AddFisaMedicala -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.doctorinterface.AddPrescriptie -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.doctorinterface.DoctorInterface -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.doctorinterface.ListaPacienti -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.doctorinterface.ListaPacienti o-- com.example.doctorinterface.PatientAdapterMesaj : patientAdapter
+  com.example.doctorinterface.ListaPacienti +-down- com.example.doctorinterface.ListaPacienti.FirestoreCallback
+  com.example.doctorinterface.ListaPacientiFisa -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.doctorinterface.ListaPacientiFisa o-- com.example.doctorinterface.PatientAdapterMesaj : patientAdapter
+  com.example.doctorinterface.ListaPacientiFisa +-down- com.example.doctorinterface.ListaPacientiFisa.FirestoreCallback
+  com.example.doctorinterface.PatientAdapterMesaj -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  com.example.doctorinterface.PatientAdapterMesaj o-- com.example.doctorinterface.PatientAdapterMesaj.OnItemClickListener : listener
+  com.example.doctorinterface.PatientAdapterMesaj +-down- com.example.doctorinterface.PatientAdapterMesaj.MyViewHolder
+  com.example.doctorinterface.PatientAdapterMesaj +-down- com.example.doctorinterface.PatientAdapterMesaj.OnItemClickListener
+  com.example.doctorinterface.PatientAdapterMesaj.MyViewHolder -up-|> androidx.recyclerview.widget.RecyclerView.ViewHolder
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

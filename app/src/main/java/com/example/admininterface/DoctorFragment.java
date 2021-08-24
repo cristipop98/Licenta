@@ -130,10 +130,6 @@ public class DoctorFragment extends Fragment {
                                 DoctorModel model = new DoctorModel(snapshot.getString("nume"), snapshot.getString("prenume"),
                                         snapshot.getString("telefon"),snapshot.getString("email"),
                                         snapshot.getString("specializare"));
-
-
-
-
                                 doctorModels.add(model);
                             }
                             doctorAdapter.notifyDataSetChanged();

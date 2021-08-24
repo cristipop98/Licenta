@@ -7,4 +7,9 @@
     <string name="tab_text_2">Pacient</string>
     <string name="tab_text_3">Serviciu Ambulanta</string>
     <string name="title_activity_admin">Admin</string>
+    <string-array name="Gen">
+        <item>Masculin</item>
+        <item>Feminin</item>
+
+    </string-array>
 </resources>

@@ -48,7 +48,17 @@ public class ServiciuAmbulantaAdapter extends RecyclerView.Adapter<ServiciuAmbul
         int j=0;
 
         holder.nume.setText(ambulantaModelList.get(position).getNume());
-        holder.disponibilitate.setTextColor(Color.GREEN);
+
+        if(ambulantaModelList.get(position).isDisponibilitate()) {
+            holder.disponibilitate.setText("True");
+            holder.disponibilitate.setTextColor(Color.GREEN);
+            //  holder.disponibilitate.setTextColor(Color.GREEN);
+        }
+        else
+        {
+            holder.disponibilitate.setText("False");
+            holder.disponibilitate.setTextColor(Color.RED);
+        }
         holder.mail.setText(ambulantaModelList.get(position).getMail());
         holder.telefon.setText(ambulantaModelList.get(position).getTelefon());
 

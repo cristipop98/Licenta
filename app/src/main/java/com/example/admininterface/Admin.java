@@ -27,7 +27,7 @@ public class Admin extends AppCompatActivity {
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
-        FloatingActionButton fab = findViewById(R.id.fab1);
+        FloatingActionButton fab = findViewById(R.id.fab2);
 
         FirebaseAuth fAuth=FirebaseAuth.getInstance();
 

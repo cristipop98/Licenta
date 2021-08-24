@@ -9,7 +9,6 @@ import android.widget.Button;
 
 import com.example.R;
 import com.example.logininterface.MainActivity;
-import com.example.patientinterface.ListaDoctoriProgramare;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -22,7 +21,7 @@ public class DoctorInterface extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctor_interface);
 
-        FloatingActionButton fab = findViewById(R.id.fab1);
+        FloatingActionButton fab = findViewById(R.id.fab2);
 
         btnPacienti=findViewById(R.id.btnVizualizarePacienti);
         btnProgramari=findViewById(R.id.btnVizualizareProgramare);
@@ -52,6 +51,13 @@ public class DoctorInterface extends AppCompatActivity {
         });
 
         btnFise.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), ListaPacientiFisa.class));
+            }
+        });
+
+        btnMedicamente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), ListaPacientiFisa.class));

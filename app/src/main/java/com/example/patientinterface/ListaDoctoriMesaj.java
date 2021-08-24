@@ -29,7 +29,7 @@ public class ListaDoctoriMesaj extends AppCompatActivity {
     List<DoctorModel> doctorModels;
     private FirebaseFirestore firebaseFirestore;
     private DoctorAdapterMesaj doctorAdapter;
-    private String idBun;
+    private String idBun,numeDoctor,prenumeDoctor,specializareDoctor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +56,9 @@ public class ListaDoctoriMesaj extends AppCompatActivity {
                        // Toast.makeText(ListaDoctoriMesaj.this, idBun, Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), Mesaj.class);
                         intent.putExtra("ID", idBun);
+                        intent.putExtra("nume",item.getNume());
+                        intent.putExtra("prenume",item.getPrenume());
+                        intent.putExtra("type","doctor");
                         //setResult(CalendarProgramare.RESULT_OK,intent);
                         startActivity(intent);
 
@@ -122,6 +125,7 @@ public class ListaDoctoriMesaj extends AppCompatActivity {
                             String id=snapshot.getId();
                             //Log.d("id1",id);
                             idBun=id;
+
 
                         }
                     }

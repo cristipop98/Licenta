@@ -1,0 +1,344 @@
+@startuml
+
+title __PATIENTINTERFACE's Class Diagram__\n
+
+  namespace com.example {
+    namespace patientinterface {
+      class com.example.patientinterface.CalendarProgramare {
+          ~ btnPorgramare : Button
+          ~ dateObject : Date
+          ~ date_time_in : EditText
+          ~ firebaseAuth : FirebaseAuth
+          ~ firebaseFirestore : FirebaseFirestore
+          ~ timeObject : Date
+          ~ x : int
+          {static} - TIME_PICKER_INTERVAL : int
+          - mIgnoreEvent : boolean
+          - programareModels : List<ProgramareModel>
+          + showData()
+          # onCreate()
+          - AddToFirestore()
+          - showDateTimeDialog()
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace patientinterface {
+      class com.example.patientinterface.DoctorAdapterMesaj {
+          ~ context : Context
+          - doctorModelList : List<DoctorModel>
+          - firebaseFirestore : FirebaseFirestore
+          + DoctorAdapterMesaj()
+          + getItemCount()
+          + onBindViewHolder()
+          + onCreateViewHolder()
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace patientinterface {
+      class com.example.patientinterface.DoctorAdapterMesaj.MyViewHolder {
+          + imageView : ImageView
+          + nume : TextView
+          + MyViewHolder()
+          + bind()
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace patientinterface {
+      interface com.example.patientinterface.DoctorAdapterMesaj.OnItemClickListener {
+          {abstract} + onItemClick()
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace patientinterface {
+      class com.example.patientinterface.FisaMedicala {
+          - alergii : TextView
+          - boli : TextView
+          - dataNasterii : TextView
+          - firebaseAuth : FirebaseAuth
+          - firebaseFirestore : FirebaseFirestore
+          - fisaMedicalaModels : List<FisaMedicalaModel>
+          - gen : TextView
+          - greutate : TextView
+          - grupaSanguina : TextView
+          - idBun : String
+          - inaltime : TextView
+          - intolerante : TextView
+          - nume : TextView
+          - prenume : TextView
+          + showData()
+          # onCreate()
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace patientinterface {
+      class com.example.patientinterface.FisaMedicalaModel {
+          - allergies : String
+          - blood_type : String
+          - diagnostic : HashMap<String, String>
+          - gen : String
+          - height : int
+          - id : UUID
+          - intolerances : String
+          - patientID : String
+          - weight : int
+          + FisaMedicalaModel()
+          + FisaMedicalaModel()
+          + getAllergies()
+          + getBlood_type()
+          + getDiagnostic()
+          + getGen()
+          + getHeight()
+          + getIntolerances()
+          + getPatientID()
+          + getWeight()
+          + setAllergies()
+          + setBlood_type()
+          + setDiagnostic()
+          + setGen()
+          + setHeight()
+          + setIntolerances()
+          + setPatientID()
+          + setWeight()
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace patientinterface {
+      class com.example.patientinterface.ListaDoctori {
+          # onCreate()
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace patientinterface {
+      class com.example.patientinterface.ListaDoctoriMesaj {
+          ~ doctorModels : List<DoctorModel>
+          - firebaseFirestore : FirebaseFirestore
+          - idBun : String
+          - numeDoctor : String
+          - prenumeDoctor : String
+          - recyclerView : RecyclerView
+          - specializareDoctor : String
+          + showData()
+          # onCreate()
+          - readId()
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace patientinterface {
+      interface com.example.patientinterface.ListaDoctoriMesaj.FirestoreCallback {
+          {abstract} + onCallback()
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace patientinterface {
+      class com.example.patientinterface.ListaDoctoriProgramare {
+          ~ doctorModels : List<DoctorModel>
+          - firebaseFirestore : FirebaseFirestore
+          - idBun : String
+          - recyclerView : RecyclerView
+          + showData()
+          # onCreate()
+          - readId()
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace patientinterface {
+      interface com.example.patientinterface.ListaDoctoriProgramare.FirestoreCallback {
+          {abstract} + onCallback()
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace patientinterface {
+      class com.example.patientinterface.Mesaj {
+          ~ btnSend : ImageButton
+          ~ collectionReference : CollectionReference
+          ~ firebaseAuth : FirebaseUser
+          ~ firebaseFirestore : FirebaseFirestore
+          ~ intent : Intent
+          ~ mesaj : EditText
+          ~ mesajModels : List<MesajModel>
+          ~ profile_image : CircleImageView
+          ~ recyclerView : RecyclerView
+          ~ username : TextView
+          # onCreate()
+          - readMessage()
+          - sendMessage()
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace patientinterface {
+      class com.example.patientinterface.MesajModel {
+          - message : String
+          - reciever : String
+          - sender : String
+          + MesajModel()
+          + MesajModel()
+          + getMessage()
+          + getReciever()
+          + getSender()
+          + setMessage()
+          + setReciever()
+          + setSender()
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace patientinterface {
+      class com.example.patientinterface.MessageAdapter {
+          {static} + MSG_TYPE_LEFT : int
+          {static} + MSG_TYPE_RIGHT : int
+          ~ firebaseAuth : FirebaseUser
+          ~ firebaseFirestore : FirebaseFirestore
+          - context : Context
+          - mesajModelList : List<MesajModel>
+          + MessageAdapter()
+          + getItemCount()
+          + getItemViewType()
+          + onBindViewHolder()
+          + onCreateViewHolder()
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace patientinterface {
+      class com.example.patientinterface.MessageAdapter.ViewHolder {
+          + imageView : ImageView
+          + show_message : TextView
+          + ViewHolder()
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace patientinterface {
+      class com.example.patientinterface.PatientInterface {
+          ~ btnChat : Button
+          ~ btnDisconnect : Button
+          ~ btnFisa : Button
+          ~ btnProgramare : Button
+          ~ btnUrgenta : Button
+          ~ fAuth : FirebaseAuth
+          {static} - TAG : String
+          # onCreate()
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace patientinterface {
+      class com.example.patientinterface.ProgramareModel {
+          ~ dataProgramare : String
+          ~ doctorId : String
+          ~ id : UUID
+          ~ pacientId : String
+          + ProgramareModel()
+          + ProgramareModel()
+          + getDataProgramare()
+          + getDoctorId()
+          + getId()
+          + getPacientId()
+          + setDataProgramare()
+          + setDoctorId()
+          + setId()
+          + setPacientId()
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace patientinterface {
+      class com.example.patientinterface.TimeIntervalHelper {
+          {static} + generateTimeInterval()
+          {static} + generateTimeInterval()
+          {static} - getInterval()
+      }
+    }
+  }
+  
+
+  namespace com.example {
+    namespace patientinterface {
+      class com.example.patientinterface.UrgentaMedicala {
+          ~ btnTrimite : Button
+          {static} - TAG : String
+          - URL : String
+          - requestQueue : RequestQueue
+          # onCreate()
+      }
+    }
+  }
+  
+
+  com.example.patientinterface.CalendarProgramare -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.patientinterface.DoctorAdapterMesaj -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  com.example.patientinterface.DoctorAdapterMesaj o-- com.example.patientinterface.DoctorAdapterMesaj.OnItemClickListener : listener
+  com.example.patientinterface.DoctorAdapterMesaj +-down- com.example.patientinterface.DoctorAdapterMesaj.MyViewHolder
+  com.example.patientinterface.DoctorAdapterMesaj +-down- com.example.patientinterface.DoctorAdapterMesaj.OnItemClickListener
+  com.example.patientinterface.DoctorAdapterMesaj.MyViewHolder -up-|> androidx.recyclerview.widget.RecyclerView.ViewHolder
+  com.example.patientinterface.FisaMedicala -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.patientinterface.ListaDoctori -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.patientinterface.ListaDoctoriMesaj -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.patientinterface.ListaDoctoriMesaj o-- com.example.patientinterface.DoctorAdapterMesaj : doctorAdapter
+  com.example.patientinterface.ListaDoctoriMesaj +-down- com.example.patientinterface.ListaDoctoriMesaj.FirestoreCallback
+  com.example.patientinterface.ListaDoctoriProgramare -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.patientinterface.ListaDoctoriProgramare o-- com.example.admininterface.DoctorAdapter : doctorAdapter
+  com.example.patientinterface.ListaDoctoriProgramare +-down- com.example.patientinterface.ListaDoctoriProgramare.FirestoreCallback
+  com.example.patientinterface.Mesaj -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.patientinterface.Mesaj o-- com.example.patientinterface.MessageAdapter : messageAdapter
+  com.example.patientinterface.MessageAdapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  com.example.patientinterface.MessageAdapter +-down- com.example.patientinterface.MessageAdapter.ViewHolder
+  com.example.patientinterface.MessageAdapter.ViewHolder -up-|> androidx.recyclerview.widget.RecyclerView.ViewHolder
+  com.example.patientinterface.PatientInterface -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.patientinterface.UrgentaMedicala -up-|> androidx.appcompat.app.AppCompatActivity
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

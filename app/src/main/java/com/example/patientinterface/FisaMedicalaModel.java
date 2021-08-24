@@ -1,5 +1,7 @@
 package com.example.patientinterface;
 
+import java.sql.Timestamp;
+import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
@@ -12,16 +14,18 @@ public class FisaMedicalaModel {
     private String blood_type;
     private String allergies;
     private String intolerances;
-    private String diseases;
+    private String gen;
+    private HashMap<String,String> diagnostic;
 
-    public FisaMedicalaModel(String patientID, int height, int weight, String blood_type,String allergies,String intolerances,String diseases) {
+    public FisaMedicalaModel(String patientID, int height, int weight, String blood_type,String allergies,String intolerances,String gen,HashMap diagnostic) {
         this.patientID = patientID;
         this.height = height;
         this.weight = weight;
         this.blood_type = blood_type;
         this.allergies = allergies;
         this.intolerances = intolerances;
-        this.diseases = diseases;
+        this.gen=gen;
+        this.diagnostic = diagnostic;
     }
     public FisaMedicalaModel()
     {}
@@ -74,11 +78,19 @@ public class FisaMedicalaModel {
         this.intolerances = intolerances;
     }
 
-    public String getDiseases() {
-        return diseases;
+    public HashMap<String, String> getDiagnostic() {
+        return diagnostic;
     }
 
-    public void setDiseases(String diseases) {
-        this.diseases = diseases;
+    public void setDiagnostic(HashMap<String, String> diagnostic) {
+        this.diagnostic = diagnostic;
+    }
+
+    public String getGen() {
+        return gen;
+    }
+
+    public void setGen(String gen) {
+        this.gen = gen;
     }
 }

@@ -54,6 +54,9 @@ public class ListaPacienti extends AppCompatActivity {
                         // Toast.makeText(ListaDoctoriMesaj.this, idBun, Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), Mesaj.class);
                         intent.putExtra("ID", idBun);
+                        intent.putExtra("nume",item.getNume());
+                        intent.putExtra("prenume",item.getPrenume());
+                        intent.putExtra("type","patient");
                         //setResult(CalendarProgramare.RESULT_OK,intent);
                         startActivity(intent);
 
