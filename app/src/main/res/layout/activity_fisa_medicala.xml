@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cornflowerblue"
-    tools:context=".patientinterface.FisaMedicala">
+    tools:context=".activity.FisaMedicala">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarFisaMedicala"
@@ -233,5 +233,27 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/greutateFisa" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="55dp"
+        android:layout_height="47dp"
+        android:backgroundTint="@color/purple_500"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
+
+    <Button
+        android:id="@+id/btnAdaugareFisa"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="121dp"
+        android:text="Adauga fisa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/boliFisa" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

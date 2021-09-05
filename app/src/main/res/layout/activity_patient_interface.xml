@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:backgroundTint="@color/cornflowerblue"
-    tools:context=".patientinterface.PatientInterface">
+    tools:context=".activity.PatientInterface">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarPaginaPacient"
@@ -91,7 +91,7 @@
         android:layout_marginTop="14dp"
         android:layout_marginEnd="117dp"
         android:layout_marginBottom="352dp"
-        android:text="Medicamente"
+        android:text="Prescriptie"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

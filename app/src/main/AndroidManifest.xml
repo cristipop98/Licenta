@@ -2,7 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example">
 
+    <supports-screens android:smallScreens="true"
+        android:normalScreens="true"
+        android:largeScreens="true"
+        android:xlargeScreens="true"
+        android:anyDensity="true" />
+
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <application
         android:allowBackup="true"
@@ -12,30 +21,43 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LoginInterface"
         android:usesCleartextTraffic="true">
-        <activity android:name=".doctorinterface.AddPrescriptie"></activity>
-        <activity android:name=".serviciuambulantainterface.ServiciuAmbulantaInterface" />
-        <activity android:name=".patientinterface.UrgentaMedicala" />
-        <activity android:name=".doctorinterface.ListaPacientiFisa" />
-        <activity android:name=".patientinterface.FisaMedicala" />
-        <activity android:name=".doctorinterface.AddFisaMedicala" />
-        <activity android:name=".admininterface.AddServiciuAmbulanta" />
-        <activity android:name=".doctorinterface.ListaPacienti" />
-        <activity android:name=".logininterface.ResetPassword" />
-        <activity android:name=".patientinterface.Mesaj" />
-        <activity android:name=".patientinterface.ListaDoctoriMesaj" />
-        <activity android:name=".patientinterface.ListaDoctoriProgramare" />
-        <activity android:name=".doctorinterface.DoctorInterface" />
-        <activity android:name=".patientinterface.CalendarProgramare" />
-        <activity android:name=".patientinterface.ListaDoctori" />
-        <activity android:name=".admininterface.AddDoctor" />
-        <activity android:name=".admininterface.AddPatient" />
+
+
+
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyAemeYNNrXHC7Ogy7BFrZ8lvXWq8QUlmbc"/>
+
+
+        <activity android:name=".activity.Location"></activity>
+        <activity android:name=".activity.PrescriptieMedicala" />
+        <activity android:name=".activity.VizualizarePrescriptieDoctor" />
+        <activity android:name=".activity.ListaPacientiPrescriptie" />
+        <activity android:name=".activity.VizualizareProgramare" />
+        <activity android:name=".activity.AddPrescriptie" />
+        <activity android:name=".activity.ServiciuAmbulantaInterface" />
+        <activity android:name=".activity.UrgentaMedicala" />
+        <activity android:name=".activity.ListaPacientiFisa" />
+        <activity android:name=".activity.FisaMedicala" />
+        <activity android:name=".activity.AddFisaMedicala" />
+        <activity android:name=".activity.AddServiciuAmbulanta" />
+        <activity android:name=".activity.ListaPacienti" />
+        <activity android:name=".activity.ResetPassword" />
+        <activity android:name=".activity.Mesaj" />
+        <activity android:name=".activity.ListaDoctoriMesaj" />
+        <activity android:name=".activity.ListaDoctoriProgramare" />
+        <activity android:name=".activity.DoctorInterface" />
+        <activity android:name=".activity.CalendarProgramare" />
+        <activity android:name=".activity.ListaDoctori" />
+        <activity android:name=".activity.AddDoctor" />
+        <activity android:name=".activity.AddPatient" />
         <activity
-            android:name=".admininterface.Admin"
+            android:name=".activity.Admin"
             android:label="@string/title_activity_admin"
             android:theme="@style/Theme.LoginInterface.NoActionBar" />
-        <activity android:name=".patientinterface.PatientInterface" />
-        <activity android:name=".logininterface.Register" />
-        <activity android:name=".logininterface.MainActivity">
+        <activity android:name=".activity.PatientInterface" />
+        <activity android:name=".activity.Register" />
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -44,7 +66,7 @@
         </activity>
 
         <service
-            android:name=".MyFirebaseInstanceIDService"
+            android:name=".service.MyFirebaseInstanceIDService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />

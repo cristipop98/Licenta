@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/cornflowerblue"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/nume_prescriptie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/purple_500"
+            android:padding="8dp"
+            android:text="Nume"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/efecteSecundare_precriptie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/purple_500"
+            android:padding="8dp"
+            android:text="Efecte secundare"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/administrare_precriptie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/purple_500"
+            android:padding="8dp"
+            android:text="Administrare"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/pret_prescriptie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/purple_500"
+            android:padding="8dp"
+            android:text="Pret"
+            android:textSize="24sp" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cornflowerblue"
-    tools:context=".doctorinterface.DoctorInterface"
+    tools:context=".activity.DoctorInterface"
     android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar

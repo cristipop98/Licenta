@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cornflowerblue"
-    tools:context=".patientinterface.UrgentaMedicala">
+    tools:context=".activity.UrgentaMedicala">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarUrgenta"
@@ -21,7 +21,7 @@
         app:titleMarginStart="115dp" />
 
     <EditText
-        android:id="@+id/editTextTextMultiLine"
+        android:id="@+id/txtDescriere"
         android:layout_width="257dp"
         android:layout_height="63dp"
         android:layout_marginStart="64dp"
@@ -46,6 +46,19 @@
         android:text="Trimite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine" />
+        app:layout_constraintTop_toBottomOf="@+id/txtDescriere" />
+
+    <Button
+        android:id="@+id/buttonLocatie"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="136dp"
+        android:text="Locatie"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonTrimiteNotificare" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

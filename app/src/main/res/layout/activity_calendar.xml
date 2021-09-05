@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cornflowerblue"
-    tools:context=".patientinterface.CalendarProgramare">
+    tools:context=".activity.CalendarProgramare">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarCalendar"
@@ -29,44 +29,41 @@
         android:layout_below="@+id/toolbarCalendar"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="381dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="480dp"
+        android:layout_marginEnd="30dp"
         android:hint="SELECT DATE AND HOUR" />
-
-    <EditText
-        android:id="@+id/textDate"
-        android:hint="SELECT DATE"
-        android:layout_width="336dp"
-        android:layout_height="42dp"
-        android:layout_below="@+id/textDateHour"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="23dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="33dp" />
-
-    <EditText
-        android:id="@+id/textHour"
-        android:hint="SELECT HOUR"
-        android:layout_width="336dp"
-        android:layout_height="42dp"
-        android:layout_below="@+id/textDate"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="23dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="33dp" />
 
     <Button
         android:id="@+id/btnAdaugaProgramare"
         android:layout_width="160dp"
         android:layout_height="62dp"
-        android:layout_below="@+id/textHour"
+        android:layout_below="@id/textDateHour"
         android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
         android:layout_marginStart="117dp"
         android:layout_marginTop="42dp"
+        android:layout_marginBottom="44dp"
         android:text="Adauga programare" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleViewProgramare"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="58dp"
+        android:layout_marginBottom="195dp"
+        android:background="@color/cornflowerblue" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="55dp"
+        android:layout_height="47dp"
+        android:backgroundTint="@color/purple_500"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
 
 
 </RelativeLayout>

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cornflowerblue"
-    tools:context=".logininterface.MainActivity"
+    tools:context=".activity.MainActivity"
     tools:visibility="visible">
 
 
@@ -54,7 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="99dp"
         android:layout_marginBottom="157dp"
-        android:text="M-Health"
+        android:text="mCLINIChelp"
         android:textAlignment="center"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/passwordLogin"
