@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -117,10 +118,7 @@ public class ListaPacientiFisa extends AppCompatActivity {
                                 snapshot.getString("dataNasterii"),snapshot.getString("adresa"),
                                 snapshot.getString("telefon"),snapshot.getString("email"));
 
-
-
-
-                        if(model.getEmail().equals(email))
+                        if(model.getEmail()!=null && model.getEmail().equals(email))
                         {
                             String id=snapshot.getId();
                             idBun=id;

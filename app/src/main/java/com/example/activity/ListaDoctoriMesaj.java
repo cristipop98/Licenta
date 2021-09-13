@@ -125,8 +125,6 @@ public class ListaDoctoriMesaj extends AppCompatActivity {
                                 snapshot.getString("specializare"));
 
 
-
-
                         if(model.getMail().equals(email))
                         {
                             String id=snapshot.getId();

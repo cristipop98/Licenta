@@ -2,6 +2,7 @@ package com.example.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,6 +18,8 @@ import com.example.adapter.PrescriptieAdapter;
 import com.example.adapter.ProgramareAdapter;
 import com.example.model.PrescriptieModel;
 import com.example.model.ProgramareModel;
+import com.example.touchHelper.TouchHelperDoctor;
+import com.example.touchHelper.TouchHelperPrescriptie;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -66,6 +69,9 @@ public class VizualizarePrescriptieDoctor extends AppCompatActivity {
         linearLayoutManager.setStackFromEnd(true);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(prescriptieAdapter);
+
+        ItemTouchHelper itemTouchHelper=new ItemTouchHelper(new TouchHelperPrescriptie(prescriptieAdapter));
+        itemTouchHelper.attachToRecyclerView(recyclerView);
 
 
         btnBack.setOnClickListener(new View.OnClickListener() {

@@ -1,6 +1,8 @@
 package com.example.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.R;
+import com.example.activity.AddPrescriptie;
 import com.example.model.PrescriptieModel;
 import com.example.model.ProgramareModel;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -27,6 +30,19 @@ public class PrescriptieAdapter extends RecyclerView.Adapter<PrescriptieAdapter.
     {
         this.context=context;
         this.prescriptieModelList=prescriptieModelList;
+    }
+
+    public void update(int position)
+    {
+        PrescriptieModel model=prescriptieModelList.get(position);
+        Bundle bundle=new Bundle();
+        bundle.putString("Nume",model.getNume());
+        bundle.putString("EfecteSecundare",model.getEfecteSecundare());
+        bundle.putString("Administrare",model.getAdministrare());
+        bundle.putInt("Pret",model.getPret());
+        Intent intent=new Intent(context, AddPrescriptie.class);
+        intent.putExtras(bundle);
+        context.startActivity(intent);
     }
 
     @NonNull

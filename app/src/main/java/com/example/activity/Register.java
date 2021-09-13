@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.R;
+import com.example.model.PatientModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -96,6 +97,7 @@ public class Register extends AppCompatActivity {
                             patient.put("dataNasterii",birthDate);
                             patient.put("adresa",adress);
                             patient.put("telefon",phone);
+                            patient.put("email",mail);
                             DocumentReference documentReference1=fStore.collection("users").document(userID);
                             Map<String,Object> user=new HashMap<>();
                             user.put("email",mail);
